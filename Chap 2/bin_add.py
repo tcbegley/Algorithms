@@ -13,7 +13,7 @@ def to_bin(n):
 
 
 def to_int(arr):
-    """ convery binary array to integer """
+    """ convert binary array to integer """
     n = 0
     power = 1
     for i in arr:
