@@ -4,56 +4,56 @@ from numpy.random import randint
 from math import floor
 
 
-def merge(arr, p, q, r):
-    """ assumes that arr[p:q] and arr[q:r] are sorted
-        merges in place into arr[p:r]
+def merge(arr, low, mid, high):
+    """ assumes that arr[low:mid] and arr[mid:high] are sorted
+        merges in place into arr[low:high]
         counts inversions missed by splitting array """
-    n1 = q - p
-    n2 = r - q
+    n_left = mid - low
+    n_right = high - mid
     inv_count = 0
 
-    left = [0] * n1
-    right = [0] * n2
-    for i in range(n1):
-        left[i] = arr[p+i]
-    for i in range(n2):
-        right[i] = arr[q+i]
+    left = [0] * n_left
+    right = [0] * n_right
+    for i in range(n_left):
+        left[i] = arr[low+i]
+    for i in range(n_right):
+        right[i] = arr[mid+i]
 
     i = j = k = 0
-    while i < n1 and j < n2:
+    while i < n_left and j < n_right:
         if left[i] <= right[j]:
-            arr[p + k] = left[i]
+            arr[low + k] = left[i]
             i += 1
         else:
-            arr[p + k] = right[j]
-            inv_count += n1 - i
+            arr[low + k] = right[j]
+            inv_count += n_left - i
             j += 1
         k += 1
 
     # if right runs out, merge remaining elements of left
-    while i < n1:
-        arr[p + k] = left[i]
+    while i < n_left:
+        arr[low + k] = left[i]
         i += 1
         k += 1
 
     # if left runs out, merge remaining elements of right
-    while j < n2:
-        arr[p + k] = right[j]
+    while j < n_right:
+        arr[low + k] = right[j]
         j += 1
         k += 1
 
     return inv_count
 
 
-def merge_sort(arr, p, r):
+def merge_sort(arr, low, high):
     """ recursively sorts array by dividing and combining
         counts inversions in the unsorted array as it goes """
     inv_count = 0
-    if p < r - 1:
-        q = floor((p + r) / 2)
-        inv_count += merge_sort(arr, p, q)
-        inv_count += merge_sort(arr, q, r)
-        inv_count += merge(arr, p, q, r)
+    if low < high - 1:
+        mid = floor((low + high) / 2)
+        inv_count += merge_sort(arr, low, mid)
+        inv_count += merge_sort(arr, mid, high)
+        inv_count += merge(arr, low, mid, high)
     return inv_count
 
 

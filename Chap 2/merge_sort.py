@@ -3,22 +3,22 @@ from math import inf, floor
 from numpy.random import randint
 
 
-def merge(arr, p, q, r):
-    """ assumes that arr[p:q] and arr[q:r] are sorted
-        merges in place into arr[p:r] """
-    n1 = q - p
-    n2 = r - q
-    left = [0] * (n1 + 1)
-    right = [0] * (n2 + 1)
-    for i in range(n1):
-        left[i] = arr[p+i]
-    for i in range(n2):
-        right[i] = arr[q+i]
-    left[n1] = inf
-    right[n2] = inf
+def merge(arr, low, mid, high):
+    """ assumes that arr[low:mid] and arr[mid:high] are sorted
+        merges in place into arr[low:high] """
+    n_left = mid - low
+    n_right = high - mid
+    left = [0] * (n_left + 1)
+    right = [0] * (n_right + 1)
+    for i in range(n_left):
+        left[i] = arr[low+i]
+    for i in range(n_right):
+        right[i] = arr[mid+i]
+    left[n_left] = inf
+    right[n_right] = inf
     i = 0
     j = 0
-    for k in range(p, r):
+    for k in range(low, high):
         if left[i] <= right[j]:
             arr[k] = left[i]
             i += 1
@@ -27,13 +27,13 @@ def merge(arr, p, q, r):
             j += 1
 
 
-def merge_sort(arr, p, r):
+def merge_sort(arr, low, high):
     """ sort array in place using merge sort """
-    if p < r - 1:
-        q = floor((p + r) / 2)
-        merge_sort(arr, p, q)
-        merge_sort(arr, q, r)
-        merge(arr, p, q, r)
+    if low < high - 1:
+        mid = floor((low + high) / 2)
+        merge_sort(arr, low, mid)
+        merge_sort(arr, mid, high)
+        merge(arr, low, mid, high)
 
 
 if __name__ == "__main__":

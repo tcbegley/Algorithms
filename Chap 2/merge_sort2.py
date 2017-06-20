@@ -4,49 +4,49 @@ from numpy.random import randint
 from math import floor
 
 
-def merge(arr, p, q, r):
-    """ assumes that arr[p:q] and arr[q:r] are sorted
-        merges in place into arr[p:r] """
-    n1 = q - p
-    n2 = r - q
+def merge(arr, low, mid, high):
+    """ assumes that arr[low:mid] and arr[mid:high] are sorted
+        merges in place into arr[low:high] """
+    n_left = mid - low
+    n_right = high - mid
 
-    left = [0] * n1
-    right = [0] * n2
-    for i in range(n1):
-        left[i] = arr[p+i]
-    for i in range(n2):
-        right[i] = arr[q+i]
+    left = [0] * n_left
+    right = [0] * n_right
+    for i in range(n_left):
+        left[i] = arr[low+i]
+    for i in range(n_right):
+        right[i] = arr[mid+i]
 
     i = j = k = 0
-    while i < n1 and j < n2:
+    while i < n_left and j < n_right:
         if left[i] <= right[j]:
-            arr[p + k] = left[i]
+            arr[low + k] = left[i]
             i += 1
         else:
-            arr[p + k] = right[j]
+            arr[low + k] = right[j]
             j += 1
         k += 1
 
     # if right runs out, merge remaining elements of left
-    while i < n1:
-        arr[p + k] = left[i]
+    while i < n_left:
+        arr[low + k] = left[i]
         i += 1
         k += 1
 
     # if left runs out, merge remeining elements of right
-    while j < n2:
-        arr[p + k] = right[j]
+    while j < n_right:
+        arr[low + k] = right[j]
         j += 1
         k += 1
 
 
-def merge_sort(arr, p, r):
+def merge_sort(arr, low, high):
     """ recursively applies merge_sort to sub arrays then merges """
-    if p < r - 1:
-        q = floor((p + r) / 2)
-        merge_sort(arr, p, q)
-        merge_sort(arr, q, r)
-        merge(arr, p, q, r)
+    if low < high - 1:
+        mid = floor((low + high) / 2)
+        merge_sort(arr, low, mid)
+        merge_sort(arr, mid, high)
+        merge(arr, low, mid, high)
 
 
 if __name__ == "__main__":

@@ -3,16 +3,16 @@ from numpy.random import randint
 from math import floor
 
 
-def bin_search(arr, p, r, key):
-    """ search arr[p:r] for key using binary search """
-    if p < r:
-        q = floor((p + r) / 2)
+def bin_search(arr, low, high, key):
+    """ search arr[low:high] for key using binary search """
+    if low < high:
+        q = floor((low + high) / 2)
         if arr[q] == key:
             return q
         elif arr[q] > key:
-            return bin_search(arr, p, q, key)
+            return bin_search(arr, low, q, key)
         else:
-            return bin_search(arr, q+1, r, key)
+            return bin_search(arr, q+1, high, key)
     return -1
 
 
