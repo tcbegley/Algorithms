@@ -43,7 +43,7 @@ def max_subarray(arr, low, high):
 
 
 if __name__ == "__main__":
-    rand_arr = randint(-5, 5, 100)
+    rand_arr = randint(-10, 10, 100)
     low, high, best_sum = max_subarray(rand_arr, 0, len(rand_arr))
     print(rand_arr)
     print("Low: {}, high: {}, sum: {}".format(low, high, best_sum))
