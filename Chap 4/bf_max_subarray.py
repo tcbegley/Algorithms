@@ -26,7 +26,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         n = int(sys.argv[1])
     rand_arr = randint(-10, 10, n)
-    low, high, best = max_subarray(rand_arr)
+    left, right, best = max_subarray(rand_arr)
     print(rand_arr)
-    print("Low: {}, high: {}, sum: {}".format(low, high, best))
-    print(rand_arr[low:high])
+    print("Low: {}, high: {}, sum: {}".format(left, right, best))
+    print(rand_arr[left:right])
