@@ -9,12 +9,14 @@ def max_subarray(arr):
     """ find subarray of arr with largest sum """
     best_sum = -inf
     best_left = 0
-    best_right = 0
+    best_right = 1
     cur_left = 0
     cur_sum = 0
     for i in range(len(arr)):
-        cur_sum = max(cur_sum + arr[i], arr[i])
-        if cur_sum == arr[i]:
+        if cur_sum >= 0:
+            cur_sum += arr[i]
+        else:
+            cur_sum = arr[i]
             cur_left = i
         if cur_sum > best_sum:
             best_sum = cur_sum
