@@ -15,20 +15,26 @@ class Graph(object):
         self.add_edge(v, w)
         self.add_edge(w, v)
 
-    def bfs(self, s):
+    def bfs(self, start, target):
         visited = [False] * len(self.graph)
 
-        queue = [s]
-        visited[s] = True
+        queue = [start]
+        visited[start] = True
+
+        depth = {}
+        depth[start] = 0
 
         while queue:
             s = queue.pop(0)
-            print(s)
-            print(s)
+            d = depth[s]
+            if s == target:
+                return d
             for i in self.graph[s]:
                 if not visited[i]:
                     visited[i] = True
                     queue.append(i)
+                    depth[i] = d + 1
+        return -1
 
 
 if __name__ == "__main__":
@@ -39,4 +45,4 @@ if __name__ == "__main__":
     g.add_edge(2, 0)
     g.add_edge(2, 3)
     g.add_edge(3, 3)
-    g.bfs(2)
+    print(g.bfs(1, 0))
