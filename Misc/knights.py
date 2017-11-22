@@ -56,6 +56,16 @@ class Graph(object):
         return -1
 
 
+class Knight(object):
+    def __init__(self):
+        self.board, self.vertex_map = generate_board()
+
+
+def generate_board():
+    """Generate graph of possible knight moves and lookup dictionary"""
+    pass
+
+
 if __name__ == "__main__":
     g = Graph()
     g.add_edge('a', 1)
