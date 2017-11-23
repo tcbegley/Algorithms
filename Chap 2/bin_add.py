@@ -1,4 +1,6 @@
-# bin_add.py
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from numpy.random import randint
 
 
@@ -7,7 +9,7 @@ def to_bin(n):
     """ convert non-negative integer n to binary array """
     arr = []
     while n:
-        arr.append(n)
+        arr.append(n % 2)
         n //= 2
     return arr
 
@@ -43,7 +45,6 @@ def bin_add(a, b):
 
 
 if __name__ == "__main__":
-    # ensure that binary representations of numbers to be added have same length
     n1, n2 = randint(64, 128, 2)
     n3 = to_int(bin_add(to_bin(n1), to_bin(n2)))
     print("The sum of {} and {} is {}".format(n1, n2, n3))

@@ -1,12 +1,13 @@
-# bin_search.py
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from numpy.random import randint
-from math import floor
 
 
 def bin_search(arr, low, high, key):
     """ search arr[low:high] for key using binary search """
     if low < high:
-        q = floor((low + high) / 2)
+        q = (low + high) // 2
         if arr[q] == key:
             return q
         elif arr[q] > key:
