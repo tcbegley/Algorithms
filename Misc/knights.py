@@ -72,10 +72,22 @@ class Graph(object):
 
 
 class Knight(object):
+    """
+    This class can be used to find the shortest path for a knight between two
+    squares on a chessboard. It creates a graph where each vertex corresponds
+    to a square on the chessboard and is connected to all other squares
+    reachable in one move by the knight. The shortest path is then found by
+    a breadth-first search on this graph.
+
+    Graph vertices are indexed by 0, 1, ..., 63. self.vertex_map can be used to
+    go between these numeric vertex labels and traditional chessboard labels,
+    A1, C2 etc.
+    """
     def __init__(self):
         self.board, self.vertex_map = generate_board()
 
     def shortest_path(self, start, stop):
+        """Find shorest path between start and stop"""
         start_i = self.vertex_map.index(start)
         stop_i = self.vertex_map.index(stop)
         _, best_path = self.board.bfs(start_i, stop_i)
@@ -90,28 +102,28 @@ def generate_board():
         for j in range(8):
             loc = 8*i + j
             if i >= 2 and j > 0:
-                # up 2, left 1
+                # down 2, left 1
                 board.add_edge(loc, loc-17)
             if i >= 2 and j < 7:
-                # up 2, right 1
+                # down 2, right 1
                 board.add_edge(loc, loc-15)
             if i >= 1 and j > 1:
-                # up 1, left 2
+                # down 1, left 2
                 board.add_edge(loc, loc-10)
             if i >= 1 and j < 6:
-                # up 1, right 2
+                # down 1, right 2
                 board.add_edge(loc, loc-6)
             if i < 7 and j > 1:
-                # down 1, left 2
+                # up 1, left 2
                 board.add_edge(loc, loc+6)
             if i < 7 and j < 6:
-                # down 1, right 2
+                # up 1, right 2
                 board.add_edge(loc, loc+10)
             if i < 6 and j > 0:
-                # down 2, left 1
+                # up 2, left 1
                 board.add_edge(loc, loc+15)
             if i < 6 and j < 7:
-                # down 2, right 1
+                # up 2, right 1
                 board.add_edge(loc, loc+17)
     return board, vertex_map
 
