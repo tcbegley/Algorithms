@@ -1,10 +1,13 @@
-# insertion_sort_rec.py
-# a recursive implementation of insertion sort
-from numpy.random import randint
+"""
+A recursive implementation of insertion sort.
+"""
+from random import randint
 
 
 def insertion_sort(arr, i):
-    """ sort a list/array in place recursively using insertion sort """
+    """
+    Sort a list/array in place recursively using insertion sort.
+    """
     if i > 1:
         insertion_sort(arr, i-1)
         key = arr[i-1]
@@ -16,6 +19,6 @@ def insertion_sort(arr, i):
 
 
 if __name__ == "__main__":
-    rand_arr = list(randint(0, 1000, 100))
+    rand_arr = [randint(0, 1000) for _ in range(100)]
     insertion_sort(rand_arr, len(rand_arr))
     print(rand_arr)

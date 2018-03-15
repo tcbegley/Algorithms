@@ -1,4 +1,6 @@
-# lin_search.py
+"""
+Linear search implementation. Exercise 2.1-3
+"""
 from numpy.random import randint
 
 
@@ -12,10 +14,10 @@ def lin_search(arr, key):
 
 
 if __name__ == "__main__":
-    rand_arr = randint(0, 100, 100)
-    rand_key = randint(0, 100, 1)[0]
+    rand_arr = [randint(1, 100) for _ in range(100)]
+    rand_key = randint(1, 100)
     idx = lin_search(rand_arr, rand_key)
     if idx >= 0:
-        print("{} found at index {}.".format(rand_key, idx))
+        print(f"{rand_key} found at index {idx}.")
     else:
-        print("{} not found in array.".format(rand_key))
+        print(f"{rand_key} not found in array.")

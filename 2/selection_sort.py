@@ -1,5 +1,7 @@
-# selection_sort.py
-from numpy.random import randint
+"""
+Implementation of selection sort. Exercise 2.2-2
+"""
+from random import randint
 
 
 def selection_sort(arr):
@@ -15,6 +17,6 @@ def selection_sort(arr):
 
 
 if __name__ == "__main__":
-    rand_arr = randint(0, 100, 100)
+    rand_arr = [randint(0, 100) for _ in range(100)]
     selection_sort(rand_arr)
     print(rand_arr)

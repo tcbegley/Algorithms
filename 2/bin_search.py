@@ -1,7 +1,7 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-from numpy.random import randint
+"""
+Implementation of binary search. Exercise 2.3-5
+"""
+from random import randint
 
 
 def bin_search(arr, low, high, key):
@@ -18,11 +18,11 @@ def bin_search(arr, low, high, key):
 
 
 if __name__ == "__main__":
-    rand_arr = randint(0, 100, 100)
+    rand_arr = [randint(0, 99) for _ in range(100)]
     rand_arr.sort()
-    rand_key = randint(0, 100, 1)[0]
+    rand_key = randint(0, 99)
     idx = bin_search(rand_arr, 0, len(rand_arr), rand_key)
     if idx >= 0:
-        print("{} found at index {}.".format(rand_key, idx))
+        print(f"{rand_key} found at index {idx}.")
     else:
-        print("{} not found.".format(rand_key))
+        print(f"{rand_key} not found.")

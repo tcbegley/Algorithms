@@ -1,12 +1,14 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+"""
+Addition function that takes input as binary arrays. Exercise 2.1-4
+"""
+from functools import reduce
+from random import randint
 
-from numpy.random import randint
 
-
-# helper functions for converting to and from binary arrays
 def to_bin(n):
-    """ convert non-negative integer n to binary array """
+    """
+    Convert non-negative integer n to binary array.
+    """
     arr = []
     while n:
         arr.append(n % 2)
@@ -15,17 +17,16 @@ def to_bin(n):
 
 
 def to_int(arr):
-    """ convert binary array to integer """
-    n = 0
-    power = 1
-    for i in arr:
-        n += i*power
-        power *= 2
-    return n
+    """
+    Convert binary array to integer.
+    """
+    return reduce(lambda x, y: 2*x + y, reversed(arr))
 
 
 def bin_add(a, b):
-    """ add two binary arrays of same length """
+    """
+    Add two binary arrays of same length
+    """
     if len(a) != len(b):
         raise ValueError("Binary arrays must have same length.")
 
@@ -45,6 +46,6 @@ def bin_add(a, b):
 
 
 if __name__ == "__main__":
-    n1, n2 = randint(64, 128, 2)
+    n1, n2 = [randint(64, 127) for _ in range(2)]
     n3 = to_int(bin_add(to_bin(n1), to_bin(n2)))
-    print("The sum of {} and {} is {}".format(n1, n2, n3))
+    print(f"The sum of {n1} and {n2} is {n3}")

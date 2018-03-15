@@ -1,7 +1,13 @@
-# merge_sort_inv.py
-# merge sort with inversion counter
-from numpy.random import randint
+"""
+Implementation of merge sort that counts the number of inversions while
+sorting.
+
+An inversion for the array a is a pair (i, j) such that i < j and a[i] > a[j].
+
+See problem 2-4
+"""
 from math import floor
+from random import randint
 
 
 def merge(arr, low, mid, high):
@@ -58,6 +64,7 @@ def merge_sort(arr, low, high):
 
 
 if __name__ == "__main__":
-    rand_arr = randint(0, 100, 100)
+    rand_arr = [randint(0, 100) for _ in range(100)]
     count = merge_sort(rand_arr, 0, len(rand_arr))
-    print(count, '\n', rand_arr)
+    print(f"Input has {count} inversions.")
+    print(rand_arr)

@@ -1,12 +1,17 @@
-# merge_sort2.py
-# alternative implementation of merge sort not using 'sentinels'
-from numpy.random import randint
+"""
+Alternative implementation of merge sort not using 'sentinels' (i.e. inf).
+
+Exercise 2.3-2
+"""
 from math import floor
+from random import randint
 
 
 def merge(arr, low, mid, high):
-    """ assumes that arr[low:mid] and arr[mid:high] are sorted
-        merges in place into arr[low:high] """
+    """
+    Assumes that arr[low:mid] and arr[mid:high] are sorted
+    merges in place into arr[low:high]
+    """
     n_left = mid - low
     n_right = high - mid
 
@@ -50,6 +55,6 @@ def merge_sort(arr, low, high):
 
 
 if __name__ == "__main__":
-    rand_arr = randint(0, 100, 100)
+    rand_arr = [randint(0, 100) for _ in range(100)]
     merge_sort(rand_arr, 0, len(rand_arr))
     print(rand_arr)

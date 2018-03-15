@@ -1,11 +1,15 @@
-# merge_sort.py
+"""
+Implementation of merge sort. Section 2.3.1
+"""
 from math import inf, floor
-from numpy.random import randint
+from random import randint
 
 
 def merge(arr, low, mid, high):
-    """ assumes that arr[low:mid] and arr[mid:high] are sorted
-        merges in place into arr[low:high] """
+    """
+    Assumes that arr[low:mid] and arr[mid:high] are sorted merges in place
+    into arr[low:high]
+    """
     n_left = mid - low
     n_right = high - mid
     left = [0] * (n_left + 1)
@@ -28,7 +32,9 @@ def merge(arr, low, mid, high):
 
 
 def merge_sort(arr, low, high):
-    """ sort array in place using merge sort """
+    """
+    Sort array in place using merge sort.
+    """
     if low < high - 1:
         mid = floor((low + high) / 2)
         merge_sort(arr, low, mid)
@@ -37,6 +43,6 @@ def merge_sort(arr, low, high):
 
 
 if __name__ == "__main__":
-    rand_arr = randint(0, 100, 100)
+    rand_arr = [randint(0, 100) for _ in range(100)]
     merge_sort(rand_arr, 0, len(rand_arr))
     print(rand_arr)
