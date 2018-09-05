@@ -5,7 +5,9 @@ from random import randint
 
 
 def bin_search(arr, low, high, key):
-    """ search arr[low:high] for key using binary search """
+    """
+    Search arr[low:high] for key using binary search
+    """
     if low < high:
         q = (low + high) // 2
         if arr[q] == key:
@@ -13,7 +15,7 @@ def bin_search(arr, low, high, key):
         elif arr[q] > key:
             return bin_search(arr, low, q, key)
         else:
-            return bin_search(arr, q+1, high, key)
+            return bin_search(arr, q + 1, high, key)
     return -1
 
 

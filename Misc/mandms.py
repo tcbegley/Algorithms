@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """
 This code is a solution of the following problem:
 
@@ -28,7 +25,7 @@ def smallest_prime_factor(n):
     if n % 2 == 0:
         return 2
     i = 3
-    while i*i < n:
+    while i * i < n:
         if n % i == 0:
             return i
         i += 2
@@ -38,7 +35,7 @@ def smallest_prime_factor(n):
 def chunk(s, p):
     """Split s into pieces of length p. Note, it doesn't actually check whether
     p divides len(s)"""
-    return [s[i-p:i] for i in range(p, len(s)+1, p)]
+    return [s[i - p : i] for i in range(p, len(s) + 1, p)]
 
 
 def period(s):
@@ -49,8 +46,8 @@ def period(s):
     n = len_s
     while n > 1:
         p = smallest_prime_factor(n)
-        if len(set(chunk(s, len_s//p))) == 1:
-            res = period(s[:len_s//p])
+        if len(set(chunk(s, len_s // p))) == 1:
+            res = period(s[: len_s // p])
             return res[0] * p, res[1]
         n //= p
     return 1, s

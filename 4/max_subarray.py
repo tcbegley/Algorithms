@@ -1,16 +1,20 @@
-# max_subarray.py
-from numpy.random import randint
-from math import inf, floor
+"""
+A recursive solution of the maximum subarray problem
+"""
 import sys
+from math import floor, inf
+
+from numpy.random import randint
 
 
 def max_crossing_subarray(arr, low, mid, high):
-    """ find sub-array of arr[low:high] of form arr[i:j]
-        where i < mid < j"""
+    """
+    Find sub-array of arr[low:high] of form arr[i:j] where i < mid < j
+    """
     left_sum = -inf
     cur_sum = 0
     max_left = mid
-    for i in range(mid-1, low-1, -1):
+    for i in range(mid - 1, low - 1, -1):
         cur_sum += arr[i]
         if cur_sum > left_sum:
             left_sum = cur_sum
@@ -27,14 +31,18 @@ def max_crossing_subarray(arr, low, mid, high):
 
 
 def max_subarray(arr, low, high):
-    """ find subarray of arr[low:high] with max sum """
+    """
+    Find subarray of arr[low:high] with max sum
+    """
     if low + 1 == high:
         return low, high, arr[low]
     else:
         mid = floor((high + low) / 2)
         left_low, left_high, left_sum = max_subarray(arr, low, mid)
         right_low, right_high, right_sum = max_subarray(arr, mid, high)
-        cross_low, cross_high, cross_sum = max_crossing_subarray(arr, low, mid, high)
+        cross_low, cross_high, cross_sum = max_crossing_subarray(
+            arr, low, mid, high
+        )
         if left_sum >= right_sum and left_sum >= cross_sum:
             return left_low, left_high, left_sum
         elif right_sum >= left_sum and right_sum >= cross_sum:

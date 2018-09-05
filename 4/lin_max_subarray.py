@@ -1,8 +1,10 @@
-# lin_max_subarray.py
-# a linear time solution of the max subarray problem
-from numpy.random import randint
+"""
+A linear time solution of the max subarray problem
+"""
 import sys
 from math import inf
+
+from numpy.random import randint
 
 
 def max_subarray(arr):

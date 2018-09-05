@@ -18,9 +18,9 @@ def merge(arr, low, mid, high):
     left = [0] * n_left
     right = [0] * n_right
     for i in range(n_left):
-        left[i] = arr[low+i]
+        left[i] = arr[low + i]
     for i in range(n_right):
-        right[i] = arr[mid+i]
+        right[i] = arr[mid + i]
 
     i = j = k = 0
     while i < n_left and j < n_right:

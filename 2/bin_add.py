@@ -20,7 +20,7 @@ def to_int(arr):
     """
     Convert binary array to integer.
     """
-    return reduce(lambda x, y: 2*x + y, reversed(arr))
+    return reduce(lambda x, y: 2 * x + y, reversed(arr))
 
 
 def bin_add(a, b):

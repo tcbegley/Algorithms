@@ -1,7 +1,7 @@
 """
 Implementation of merge sort. Section 2.3.1
 """
-from math import inf, floor
+from math import floor, inf
 from random import randint
 
 
@@ -15,9 +15,9 @@ def merge(arr, low, mid, high):
     left = [0] * (n_left + 1)
     right = [0] * (n_right + 1)
     for i in range(n_left):
-        left[i] = arr[low+i]
+        left[i] = arr[low + i]
     for i in range(n_right):
-        right[i] = arr[mid+i]
+        right[i] = arr[mid + i]
     left[n_left] = inf
     right[n_right] = inf
     i = 0

@@ -9,13 +9,13 @@ def insertion_sort(arr, i):
     Sort a list/array in place recursively using insertion sort.
     """
     if i > 1:
-        insertion_sort(arr, i-1)
-        key = arr[i-1]
+        insertion_sort(arr, i - 1)
+        key = arr[i - 1]
         j = i - 2
         while j >= 0 and arr[j] > key:
             arr[j + 1] = arr[j]
             j -= 1
-        arr[j+1] = key
+        arr[j + 1] = key
 
 
 if __name__ == "__main__":

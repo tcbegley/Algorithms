@@ -1,14 +1,12 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from collections import defaultdict
 
 
-class Graph(object):
+class Graph:
     """
     Graph class. Add edges using add_edge or add_undirected_edge methods.
     Vertex labels can be any immutable type.
     """
+
     def __init__(self):
         """
         Graph is stored as a dictionary where vertex labels are the keys and
@@ -71,7 +69,7 @@ class Graph(object):
         return -1, None
 
 
-class Knight(object):
+class Knight:
     """
     This class can be used to find the shortest path for a knight between two
     squares on a chessboard. It creates a graph where each vertex corresponds
@@ -83,6 +81,7 @@ class Knight(object):
     go between these numeric vertex labels and traditional chessboard labels,
     A1, C2 etc.
     """
+
     def __init__(self):
         self.board, self.vertex_map = generate_board()
 
@@ -96,38 +95,38 @@ class Knight(object):
 
 def generate_board():
     """Generate graph of possible knight moves and lookup dictionary"""
-    vertex_map = [b+a for b in 'ABCDEFGH' for a in '12345678']
+    vertex_map = [b + a for b in "ABCDEFGH" for a in "12345678"]
     board = Graph()
     for i in range(8):
         for j in range(8):
-            loc = 8*i + j
+            loc = 8 * i + j
             if i >= 2 and j > 0:
                 # down 2, left 1
-                board.add_edge(loc, loc-17)
+                board.add_edge(loc, loc - 17)
             if i >= 2 and j < 7:
                 # down 2, right 1
-                board.add_edge(loc, loc-15)
+                board.add_edge(loc, loc - 15)
             if i >= 1 and j > 1:
                 # down 1, left 2
-                board.add_edge(loc, loc-10)
+                board.add_edge(loc, loc - 10)
             if i >= 1 and j < 6:
                 # down 1, right 2
-                board.add_edge(loc, loc-6)
+                board.add_edge(loc, loc - 6)
             if i < 7 and j > 1:
                 # up 1, left 2
-                board.add_edge(loc, loc+6)
+                board.add_edge(loc, loc + 6)
             if i < 7 and j < 6:
                 # up 1, right 2
-                board.add_edge(loc, loc+10)
+                board.add_edge(loc, loc + 10)
             if i < 6 and j > 0:
                 # up 2, left 1
-                board.add_edge(loc, loc+15)
+                board.add_edge(loc, loc + 15)
             if i < 6 and j < 7:
                 # up 2, right 1
-                board.add_edge(loc, loc+17)
+                board.add_edge(loc, loc + 17)
     return board, vertex_map
 
 
 if __name__ == "__main__":
     k = Knight()
-    print(k.shortest_path('A1', 'D4'))
+    print(k.shortest_path("A1", "D4"))

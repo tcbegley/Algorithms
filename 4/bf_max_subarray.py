@@ -1,12 +1,14 @@
-# bf_max_subarray.py
-# this is a brute force solution of the max_subarray problem
-from numpy.random import randint
-from math import inf
+"""
+This is a brute force solution of the max_subarray problem
+"""
 import sys
+from math import inf
+
+from numpy.random import randint
 
 
 def max_subarray(arr):
-    """ find sub-array of arr with largest sum """
+    """Find sub-array of arr with largest sum"""
     best_sum = -inf
     best_low = 0
     best_high = 0
