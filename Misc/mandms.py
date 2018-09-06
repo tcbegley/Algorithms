@@ -33,9 +33,11 @@ def smallest_prime_factor(n):
 
 
 def chunk(s, p):
-    """Split s into pieces of length p. Note, it doesn't actually check whether
-    p divides len(s)"""
-    return [s[i - p : i] for i in range(p, len(s) + 1, p)]
+    """
+    Split s into pieces of length p. Note, it doesn't actually check whether
+    p divides len(s)
+    """
+    return [s[(i - p):i] for i in range(p, len(s) + 1, p)]
 
 
 def period(s):
